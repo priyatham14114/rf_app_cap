@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("com.app.rfapp.controller.ChangeQueue",{onInit:function(){},OnpressBackFromChangeQueue:function(){const e=this.getOwnerComponent().getRouter();e.navTo("Supervisor")}})});
+//# sourceMappingURL=ChangeQueue.controller.js.map

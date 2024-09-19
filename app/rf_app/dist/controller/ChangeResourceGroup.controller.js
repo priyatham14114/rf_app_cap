@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("com.app.rfapp.controller.ChangeResourceGroup",{onInit:function(){},OnpressBackFromChangeResourceGroup:function(){const e=this.getOwnerComponent().getRouter();e.navTo("Supervisor")}})});
+//# sourceMappingURL=ChangeResourceGroup.controller.js.map

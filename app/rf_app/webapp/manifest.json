@@ -1,0 +1,682 @@
+{
+  "_version": "1.65.0", 
+  "sap.app": {
+    "id": "com.app.rfapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.0",
+      "toolsId": "623f016c-a89e-4074-8fa2-f3cee38f70d0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/RF_App_Service/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      },
+      "mainServiceV2": {
+        "uri": "/v2/RF_App_Service/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "rfapp-display": {
+          "semanticObject": "rfapp",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.128.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.app.rfapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "ModelV2": {
+        "dataSource": "mainServiceV2",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.app.rfapp.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+"routes": [
+        {
+          "name": "InitialScreen",
+          "pattern": ":?query:",
+          "target": [
+            "TargetInitialScreen"
+          ]
+        },
+        {
+          "name": "Homepage",
+          "pattern": "Homepage/{id}",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "RouteResourcePage",
+          "pattern": "ResourcePage/{id}",
+          "target": [
+            "TargetResourcePage"
+          ]
+        },
+        {
+          "name": "Supervisor",
+          "pattern": "Supervisor",
+          "target": [
+            "TargetSupervisorPage"
+          ]
+        },
+        {
+          "name": "HuQuery",
+          "pattern": "HuQuery",
+          "target": [
+            "TargetHuQueryPage"
+          ]
+        },
+        {
+          "name": "StockBinQueryByBin",
+          "pattern": "StockBinQueryByBin",
+          "target": [
+            "TargetStockBinQueryByBin"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyASN",
+          "pattern": "ReceivingofHUbyASN",
+          "target": [
+            "TargetReceivingofHUbyASN"
+          ]
+        },
+        {
+          "name": "RouteUnloadingASNDetails",
+          "pattern": "UnloadingASNDetails",
+          "target": [
+            "TargetUnloadingASNDetails"
+          ]
+        },
+        {
+          "name": "UnloadByDelivery",
+          "pattern": "UnloadByDelivery",
+          "target": [
+            "TargetUnloadByDelivery"
+          ]
+        },
+        {
+          "name": "AdhocHuWt",
+          "pattern": "AdhocHuWt",
+          "target": [
+            "TargetAdhocHuWt"
+          ]
+        },
+        {
+          "name": "ReceivingOfHuByDoor",
+          "pattern": "ReceivingOfHuByDoor",
+          "target": [
+            "TargetReceivingOfHuByDoor"
+          ]
+        },
+        {
+          "name": "UnloadingByDoor",
+          "pattern": "UnloadingByDoor",
+          "target": [
+            "TargetUnloadingByDoor"
+          ]
+        },
+        {
+          "name": "ChangeQueue",
+          "pattern": "ChangeQueue",
+          "target": [
+            "TargetChangeQueue"
+          ]
+        },
+        {
+          "name": "ChangeResourceGroup",
+          "pattern": "ChangeResourceGroup",
+          "target": [
+            "TargetChangeResourceGroup"
+          ]
+        },
+        {
+          "name": "UnloadingByConsignmentOrder",
+          "pattern": "UnloadingByConsignmentOrder",
+          "target": [
+            "TargetUnloadingByConsignmentOrder"
+          ]
+        },
+        {
+          "name": "RoutePutawayByHU",
+          "pattern": "RoutePutawayByHU",
+          "target": [
+            "TargetPutawayByHU"
+          ]
+        },
+        {
+          "name": "RouteBillofLading",
+          "pattern": "BillofLading",
+          "target": [
+            "TargetBillofLading"
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyDelivery",
+          "pattern": "RecevingOfHUbyDelivery",
+          "target": [
+            "TargetRecevingOfHUbyDelivery"
+          ]
+        },
+        {
+          "name": "UnloadingByBillofLading",
+          "pattern": "UnloadingByBillofLading",
+          "target": [
+            "TargetUnloadingByBillofLading"
+          ]
+        },
+        {
+          "name": "MaintainHU",
+          "pattern": "MaintainHU",
+          "target": [
+            "TargetMaintainHU"
+          ]
+        },
+        {
+          "name": "UnloadingByShipment",
+          "pattern": "UnloadingByShipment",
+          "target": [
+            "TargetUnloadingByShipment"
+          ]
+        },
+        {
+          "name": "UnloadingByTU",
+          "pattern": "UnloadingByTU",
+          "target": [
+            "TargetUnloadingByTU"
+          ]
+        },
+        {
+          "name": "PutawayByWO",
+          "pattern": "PutawayByWO",
+          "target": [
+            "TargetPutawayByWO"
+          ]
+        },
+        {
+          "name": "AvailableHandlingUnitsOnBinQuery",
+          "pattern": "AvailableHandlingUnitsOnBinQuery",
+          "target": [
+            "TargetAvailableHandlingUnitsOnBinQuery"
+          ]
+        },
+        {
+          "name": "WTQueryByHU",
+          "pattern": "WTQueryByHU",
+          "target": [
+            "TargetWTQueryByHU"
+          ]
+        },
+        {
+          "name": "AdhocProductWt",
+          "pattern": "AdhocProductWt",
+          "target": [
+            "TargetAdhocProductWt"
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyManufacturingOrder",
+          "pattern": "RecevingOfHUbyManufacturingOrder",
+          "target": [
+            "TargetRecevingOfHUbyManufacturingOrder"
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocHu",
+          "pattern": "CreateConfirmAdhocHu",
+          "target": [
+            "TargetCreateConfirmAdhocHu"
+          ]
+        },
+        {
+          "name": "CreateConfirmAdhocProduct",
+          "pattern": "CreateConfirmAdhocProduct",
+          "target": [
+            "TargetCreateConfirmAdhocProduct"
+          ]
+        },
+        {
+          "name": "StockBinQueryByProduct",
+          "pattern": "StockBinQueryByProduct",
+          "target": [
+            "TargetStockBinQueryByProduct"
+          ]
+        },
+        {
+          "name": "Receivingofhubyco",
+          "pattern": "Receivingofhubyco",
+          "target": [
+            "TargetRecevingofHUbyConsignemntOrder"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyShipment",
+          "pattern": "ReceivingofHUbyShipment",
+          "target": [
+            "TargetReceivingofHUbyShipment"
+          ]
+        },
+        {
+          "name": "WTQueryByWO",
+          "pattern": "WTQueryByWO",
+          "target": [
+            "TargetWTQueryByWO"
+          ]
+        },
+        {
+          "name": "RecevingOfHUbyTUorDoor",
+          "pattern": "RecevingOfHUbyTUorDoor",
+          "target": [
+            "TargetRecevingOfHUbyTUorDoor"
+          ]
+        },
+        {
+          "name": "ReceivingofHUbyTU",
+          "pattern": "ReceivingofHUbyTU",
+          "target": [
+            "TargetReceivingofHUbyTU"
+          ]
+        },
+        {
+          "name": "SerialNumberLocation",
+          "pattern": "SerialNumberLocation",
+          "target": [
+            "TargetSerialNumberLocation"
+          ]
+
+        },
+    {
+          "name": "WTQueryByWT",
+          "pattern": "WTQueryByWT",
+          "target": [
+            "TargetWTQueryByWT"
+          ]
+        },
+        {
+          "name": "CreateShippingHU",
+          "pattern": "CreateShippingHU",
+          "target": [
+            "TargetCreateShippingHU"
+          ]
+        },
+        {
+          "name": "CreateShippingHUWOWC",
+          "pattern": "CreateShippingHUWOWC",
+          "target": [
+            "TargetCreateShippingHUWOWC"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetInitialScreen": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "InitialScreen",
+          "viewName": "InitialScreen"
+        },
+        "TargetHome": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "TargetResourcePage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ResourcePage",
+          "viewName": "ResourcePage"
+        },
+        "TargetSupervisorPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Supervisor",
+          "viewName": "Supervisor"
+        },
+        "TargetHuQueryPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HuQuery",
+          "viewName": "HuQuery"
+        },
+        "TargetStockBinQueryByBin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "StockBinQueryByBin",
+          "viewName": "StockBinQueryByBin"
+        },
+        "TargetReceivingofHUbyASN": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyASN",
+          "viewName": "ReceivingofHUbyASN"
+        },
+        "TargetUnloadingASNDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingASNDetails",
+          "viewName": "UnloadingASNDetails"
+        },
+        "TargetUnloadByDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadByDelivery",
+          "viewName": "UnloadByDelivery"
+        },
+        "TargetAdhocHuWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocHuWt",
+          "viewName": "AdhocHuWt"
+        },
+        "TargetReceivingOfHuByDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingOfHuByDoor",
+          "viewName": "ReceivingOfHuByDoor"
+        },
+        "TargetUnloadingByDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByDoor",
+          "viewName": "UnloadingByDoor"
+        },
+        "TargetChangeResourceGroup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeResourceGroup",
+          "viewName": "ChangeResourceGroup"
+        },
+        "TargetChangeQueue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ChangeQueue",
+          "viewName": "ChangeQueue"
+        },
+        "TargetUnloadingByConsignmentOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByConsignmentOrder",
+          "viewName": "UnloadingByConsignmentOrder"
+        },
+        "TargetRecevingOfHUbyDelivery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyDelivery",
+          "viewName": "RecevingOfHUbyDelivery"
+        },
+        "TargetPutawayByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByHU",
+          "viewName": "PutawayByHU"
+        },
+        "TargetPutawayByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "PutawayByWO",
+          "viewName": "PutawayByWO"
+        },
+        "TargetAvailableHandlingUnitsOnBinQuery": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AvailableHandlingUnitsOnBinQuery",
+          "viewName": "AvailableHandlingUnitsOnBinQuery"
+        },
+        "TargetWTQueryByHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByHU",
+          "viewName": "WTQueryByHU"
+        },
+        "TargetBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "BillofLading",
+          "viewName": "BillofLading"
+        },
+        "TargetUnloadingByBillofLading": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByBillofLading",
+          "viewName": "UnloadingByBillofLading"
+        },
+        "TargetMaintainHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MaintainHU",
+          "viewName": "MaintainHU"
+        },
+        "TargetUnloadingByShipment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByShipment",
+          "viewName": "UnloadingByShipment"
+        },
+        "TargetUnloadingByTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "UnloadingByTU",
+          "viewName": "UnloadingByTU"
+        },
+        "TargetAdhocProductWt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdhocProductWt",
+          "viewName": "AdhocProductWt"
+        },
+        "TargetCreateConfirmAdhocHu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocHu",
+          "viewName": "CreateConfirmAdhocHu"
+        },
+        "TargetCreateConfirmAdhocProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateConfirmAdhocProduct",
+          "viewName": "CreateConfirmAdhocProduct"
+        },
+        "TargetStockBinQueryByProduct": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "StockBinQueryByProduct",
+          "viewName": "StockBinQueryByProduct"
+        },
+        "TargetRecevingOfHUbyManufacturingOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyManufacturingOrder",
+          "viewName": "RecevingOfHUbyManufacturingOrder"
+        },
+        "TargetRecevingofHUbyConsignemntOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Receivingofhubyco",
+          "viewName": "Receivingofhubyco"
+        },
+        "TargetReceivingofHUbyShipment": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyShipment",
+          "viewName": "ReceivingofHUbyShipment"
+        },
+        "TargetWTQueryByWO": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWO",
+          "viewName": "WTQueryByWO"
+        },
+        "TargetReceivingofHUbyTU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ReceivingofHUbyTU",
+          "viewName": "ReceivingofHUbyTU"
+        },
+        "TargetRecevingOfHUbyTUorDoor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "RecevingOfHUbyTUorDoor",
+          "viewName": "RecevingOfHUbyTUorDoor"
+        },
+
+        "TargetSerialNumberLocation": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SerialNumberLocation",
+          "viewName": "SerialNumberLocation"
+        }, 
+          "TargetWTQueryByWT":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "WTQueryByWT",
+          "viewName": "WTQueryByWT"
+        },
+        "TargetCreateShippingHU": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHU",
+          "viewName": "CreateShippingHU"
+        },
+        "TargetCreateShippingHUWOWC": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CreateShippingHUWOWC",
+          "viewName": "CreateShippingHUWOWC"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.app.rfapp.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
